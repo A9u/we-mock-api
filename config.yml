@@ -1,0 +1,7 @@
+database:
+  host: "127.0.0.1"
+  user: "mongoadmin"
+  password: "password"
+  name: "we-mock-api-dev"
+  port: "27017"
+  type: "mongo"

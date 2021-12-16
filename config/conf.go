@@ -18,5 +18,5 @@ type DatabaseConf struct {
 }
 
 func (d *DatabaseConf) Uri() string {
-	return fmt.Sprintf("mongodb://%s:%s@%s:%s/%s?retryWrites=true&tls=false", d.User, d.Password, d.Host, d.Port, d.Name)
+	return fmt.Sprintf("mongodb://%s:%s@%s:%s/%s?retryWrites=true", d.User, d.Password, d.Host, d.Port, d.Name)
 }

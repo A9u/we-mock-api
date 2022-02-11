@@ -4,6 +4,7 @@ import (
 	"flag"
 	"github.com/a9u/we-mock-api/config"
 	"github.com/a9u/we-mock-api/internal/db"
+	"github.com/a9u/we-mock-api/internal/server"
 	"github.com/a9u/we-mock-api/pkg/wlog"
 	"github.com/spf13/viper"
 )
@@ -11,7 +12,14 @@ import (
 var conf = &config.Conf{}
 
 func Execute() {
+	svc := server.New(conf)
 
+	if err := svc.ListenAndServe(); err != nil {
+		wlog.Error("failed: server shutdown", err)
+		panic(err)
+	}
+
+	return
 }
 
 func initConfig(configFile string) {

@@ -7,6 +7,7 @@ const DefaultConfigFile = "config.yml"
 
 type Conf struct {
 	Database DatabaseConf `mapstructure:"database"`
+	Port     string       `mapstructure:"server_port"`
 }
 
 type DatabaseConf struct {

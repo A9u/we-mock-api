@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/a9u/we-mock-api/config"
+	"github.com/a9u/we-mock-api/internal/routes"
 	"github.com/a9u/we-mock-api/pkg/wlog"
 	"net/http"
 	"os"
@@ -18,10 +19,13 @@ type Server struct {
 }
 
 func New(cfg *config.Conf) *Server {
+	router, _ := routes.NewAPIRouter(cfg)
+
 	return &Server{
 		conf: cfg,
 		server: &http.Server{
 			Addr:         cfg.Port,
+			Handler:      router.Mux(),
 			ReadTimeout:  30 * time.Second,
 			WriteTimeout: 30 * time.Second,
 		},

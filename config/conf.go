@@ -7,6 +7,7 @@ const DefaultConfigFile = "config.yml"
 
 type Conf struct {
 	Database DatabaseConf `mapstructure:"database"`
+	Port     string       `mapstructure:"server_port"`
 }
 
 type DatabaseConf struct {
@@ -18,5 +19,5 @@ type DatabaseConf struct {
 }
 
 func (d *DatabaseConf) Uri() string {
-	return fmt.Sprintf("mongodb://%s:%s@%s:%s/%s?retryWrites=true&tls=false", d.User, d.Password, d.Host, d.Port, d.Name)
+	return fmt.Sprintf("mongodb://%s:%s@%s:%s/%s?retryWrites=true", d.User, d.Password, d.Host, d.Port, d.Name)
 }

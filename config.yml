@@ -5,3 +5,4 @@ database:
   name: "we-mock-api-dev"
   port: "27017"
   type: "mongo"
+server_port: ":8000"
